@@ -14,5 +14,32 @@ body{
 }
 .btn{
     border: none;
-    padding: 0.5rem;
+    padding: 1rem;
+}
+
+.navigation{
+    display: flex;
+    background-color: #A3C1AD;
+    justify-content: space-between;
+    
+}
+.navbar{
+    justify-content: flex-start;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+
+    padding: 1rem;
+}
+.list{
+    display: flex;
+    list-style-type: none;
+}
+.nav-links{
+    margin-right: 1rem;
+    text-decoration: none;
+    /* color: black; */
+}
+.container{
+    
 }
