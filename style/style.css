@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+    padding: none;
+}
+.sidebar{
+    border-right: 0.2rem solid black;
+    padding: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-right:105rem;
+    
+     
+}
+.btn{
+    border: none;
+    padding: 0.5rem;
+}
