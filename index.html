@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/style1.css">
+   
 </head>
 <body>
     <nav class="navigation">
-        <a href="" class="navbar">>LMS<</a>
+        <a href="" class="navbar">Library Management System</a>
         <ul class="list">
           <li class="list-elements"><a href="http://127.0.0.1:5500/index.html" class="nav-links">Home</a></li>
           <li class="list-elements"><a href="http://127.0.0.1:5500/contact.html" class="nav-links">Contact</a></li>
-          <li class="list-elements"><a href="" class="nav-links">Login</a></li>
+          <li class="list-elements"><a href="http://127.0.0.1:5500/admin_login.html" class="nav-links">Login</a></li>
         </ul>
       </nav>
-      <div class="container">
+    <div class="container">
     <div class="sidebar">  
       <button class="btn">Action & Adventure</button>
       <button class="btn">Biography</button>
@@ -31,13 +31,22 @@
       <button class="btn">True Crime</button>
       <button class="btn">Religion & Spirituality</button>
     </div>
-    <div class="bookcard">
-        <img src="book images/atomic_habbit.jpg" style="height: 6rem;">
+ <div class="books">
+    <div class="bookcard" id="book1">
+        <img class="book-img" src="book images/atomic_habbit.jpg" >
         <h4>Atomic habbit</h4>
-        <h3>Gener - self help</h3>
-        <button>borrow</button>
+        <h3>Genre - self help</h3>
+        <button class="btn-brw" onclick="bow(id)">borrow</button>
+    </div>
+    <div class="bookcard" id="book2">
+        <img class="book-img" src="book images/atomic_habbit.jpg" >
+        <h4>Atomic habbit</h4>
+        <h3>Genre - self help</h3>
+        <button class="btn-brw" onclick="bow(id)">borrow</button>
     </div>
 </div>
-    <link rel="stylesheet" href="./style/style.css">
+</div>
+<script src="script/script.js"></script>
+</body>
 </head>
 </html>
