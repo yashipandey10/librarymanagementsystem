@@ -3,9 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./contact.css">
+    <title>Contact page</title>
 </head>
 <body>
-    <p>Contact Page</p>
+    <div class="about">
+        <h1 class="heading">GET IN TOUCH</h1>
+        <div class="data">
+            <span>Phone: +91 740-470-8082 <br> +91 1234567890</span>
+        </div>
+        <div class="data">
+            <span>Email: <a href="mailto:sachinsaini18585@gmail.com" class="link">sachinsaini18585@gmail.com</a><br>
+                <a href="mailto:yashi@gmail.com" class="link">yashi@gmail.com</a></span>
+        </div>
+        <div class="data">
+            <span>Address: <a href="https://www.google.com/maps/place/NIT+Raipur/@21.2497272,81.6024542,17z/data=!3m1!4b1!4m6!3m5!1s0x3a28dde213f66723:0x21543965c50c43c7!8m2!3d21.2497222!4d81.6050291!16zL20vMGNqeXFk?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D" class="link">NIT Raipur, Chhattisgarh, 492010</a></span>
+        </div>
+    </div>
+    <div class="user">
+        <div class="user-data">
+            <input type="text" placeholder="YOUR NAME" class="data1"><br><br>
+            <input type="text" placeholder="YOUR EMAIL" class="data1"><br><br>
+            <input type="number" placeholder="YOUR PHONE" class="data1"><br><br>
+        </div>
+        <div class="user-message">
+            <textarea name="" id="message" placeholder="YOUR MESSAGE"></textarea>
+        </div>
+    </div>
+
+    <input onclick="message()" type="button" value="SEND MESSAGE" class="button">
+    
+    <script src="./script/contact.js"></script>
 </body>
 </html>
