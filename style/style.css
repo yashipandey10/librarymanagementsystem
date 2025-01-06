@@ -1,34 +1,37 @@
 body{
     margin: 0;
     padding: none;
+    height: 100vh;
+}
+.container{
+    display: flex;
+    height: 100%;
+    position: absolute;
 }
 .sidebar{
     border-right: 0.2rem solid black;
     padding: none;
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    margin-right:105rem;
-    
-     
+    height: 100%;
+    overflow-y: hidden;
 }
 .btn{
     border: none;
     padding: 1rem;
+    height: 8rem;
 }
 
 .navigation{
     display: flex;
     background-color: #A3C1AD;
     justify-content: space-between;
-    
 }
 .navbar{
     justify-content: flex-start;
     color: black;
     font-weight: bold;
     text-decoration: none;
-
     padding: 1rem;
 }
 .list{
@@ -40,6 +43,47 @@ body{
     text-decoration: none;
     /* color: black; */
 }
-.container{
-    
+
+.books{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: start;
+    margin: 4px;
+    padding: 15px;
+}
+.bookcard{
+    min-width: 15rem;
+    max-width: 10rem;
+    font-size: 1.1rem;
+    justify-items: center;
+    margin: 15px;
+    padding: 5px;
+    border: 0.2px solid grey;
+    transition: all 0.2s ease-in-out;
+}
+.bookcard:hover{
+    scale: 1.08;
+    box-shadow:2px 10px 20px rgb(68, 68, 93);
+}
+.btn-brw{
+    position: relative;
+    display:block;
+    margin: auto;
+    cursor: pointer;
+    height: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    border-radius: 12px;
+    border: 1px solid black;
+}
+.book-img{
+    width:100%;
+    overflow-x: hidden;
+    height: 15rem;
+}
+
+
+td,th{
+    border: 1px solid black;
 }
