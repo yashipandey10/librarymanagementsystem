@@ -11,12 +11,13 @@ function generateId(obj) {
 function displayTable() {
   let arr = JSON.parse(localStorage.getItem("books"));
   let tbl = document.getElementById("tbl-shw");
-  tbl.innerHTML = `<tr>
+
+  tbl.innerHTML = `<div class="tablepu"><tr>
             <th>Title</th>
             <th>Image</th>
             <th>Genre</th>
             <th>Action</th>
-        </tr>`;
+        </tr></div>`;
   arr.forEach((row) => {
     let tr = document.createElement("tr");
     const { title, image, genre, id } = row;
