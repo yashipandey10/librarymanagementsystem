@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/admin.css" />
     <link rel="stylesheet" href="./style/loginstyle.css" ">
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="add-book">
-        <label>Books title</label>
-        <input type="text" id="title-input"><br>
-        <label>Cover page</label>
-        <input type="file" accept="image/*" id="image-input"><br>
-        <label for="">Genre</label>
-        <!-- <input type="text" id="genre-input" ><br> -->
-        <select name="select" id="genre-input">
-            <option value="" selected disabled>select the genre</option>
-            <option >Action & Adventure</option>
-            <option >Biography</option>
-            <option >Mystery</option>
-            <option >Horror</option>
-            <option >Thriller & Suspense</option>
-            <option >Historical fiction</option>
-            <option >folktales</option>
-            <option> self-help</option>
-            <option >Romanaces</option>
-            <option >History</option>
-            <option >True crime</option>
-            <option>Religious & Spirituality</option>
-        </select>
-        <button type="submit" onclick="add()"> Add book</button>
+      <label>Books title</label>
+      <input type="text" id="title-input" /><br />
+      <label>Cover page</label>
+      <input type="file" accept="image/*" id="image-input" /><br />
+      <label for="">Genre</label>
+      <!-- <input type="text" id="genre-input" ><br> -->
+      <select name="select" id="genre-input">
+        <option value="" selected disabled>select the genre</option>
+        <option>Action & Adventure</option>
+        <option>Biography</option>
+        <option>Mystery</option>
+        <option>Horror</option>
+        <option>Thriller & Suspense</option>
+        <option>Historical fiction</option>
+        <option>folktales</option>
+        <option>self-help</option>
+        <option>Romanaces</option>
+        <option>History</option>
+        <option>True crime</option>
+        <option>Religious & Spirituality</option>
+      </select>
+      <button type="submit" onclick="add()">Add book</button>
     </div>
-    <div id="edit-form" style="display:none;">
-        <h3>Edit Book</h3>
+
+    <div id="edit-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditForm()">&times;</span>
+        <h2>Edit Book</h2>
         <form id="edit-book-form">
-          <input type="hidden" id="edit-book-id">
-          
-          <label for="edit-title">Title</label>
-          <input type="text" id="edit-title">
-          
-          <label for="edit-genre">Genre</label>
-          <input type="text" id="edit-genre">
-          
-          <label for="edit-image">Image Path</label>
-          <input type="text" id="edit-image">
-          
-          <button type="submit">Save</button>
-          <button type="button" onclick="closeEditForm()">Cancel</button>
+          <input type="hidden" id="edit-book-id" />
+          <label for="edit-title">Title:</label>
+          <input type="text" id="edit-title" placeholder="Title" />
+          <label for="edit-genre">Genre:</label>
+          <input type="text" id="edit-genre" placeholder="Genre" />
+          <label for="edit-image">Image:</label>
+          <input type="file" id="edit-image" accept="image/*" />
+          <button type="button" onclick="saveEdit()">Save</button>
         </form>
       </div>
-    <table  style="border: 1px;" id="tbl-shw" >
-    </table>
+    </div>
+    <table style="border: 1px" id="tbl-shw"></table>
     <script src="/script/admin.js"></script>
-</body>
+  </body>
 </html>

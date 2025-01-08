@@ -2,19 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
   displayTable();
 });
 
-let books = JSON.parse(localStorage.getItem("books")||[]);
+let books = [];
 let a = 0;
 
 function generateId(obj) {
   const { title, genre } = obj;
-  const id = title[0] + (title[1] || 0) + genre[0] + (genre[1] || 0) ;
+  const id = title[0] + (title[1] || 0) + genre[0] + (genre[1] || 0);
   return id.toString();
 }
 
 function displayTable() {
   let arr = JSON.parse(localStorage.getItem("books"));
   let tbl = document.getElementById("tbl-shw");
-
   tbl.innerHTML = `<div class="tablepu"><tr>
             <th>Title</th>
             <th>Image</th>
@@ -24,7 +23,7 @@ function displayTable() {
   arr.forEach((row) => {
     let tr = document.createElement("tr");
     const { title, image, genre, id } = row;
-    tr.innerHTML = `<td>${title}</td><td><img style="height:5rem" src =${image}></img></td><td>${genre}</td><td><button onclick="editBook('${id}')">edit</button> <button onclick="deletebook('${id}')">delete</button></td>`;
+    tr.innerHTML = `<td>${title}</td><td><img style="height:5rem" src ='${image}'></img></td><td>${genre}</td><td><button onclick="editBook('${id}')">edit</button> <button onclick="deletebook('${id}')">delete</button></td>`;
     tbl.appendChild(tr);
   });
 }
@@ -59,7 +58,7 @@ function add() {
 }
 
 function deletebook(id) {
-  let booklist = JSON.parse(localStorage.getItem("books")) || [];
+  let booklist = JSON.parse(localStorage.getItem("books"));
   booklist = booklist.filter((book) => book.id !== id);
   localStorage.setItem("books", JSON.stringify(booklist));
   displayTable();
@@ -68,53 +67,82 @@ function deletebook(id) {
 function editBook(bookId) {
   const booklist = JSON.parse(localStorage.getItem("books"));
   const book = booklist.find((book) => book.id === bookId);
-  if(book){
-    document.getElementById("title-input").value = book.title;
-    document.getElementById("genre-input").value = book.genre;
-    // document.getElementById("image-input").value = book.image;
-    document.getElementById("edit-id").value = generateId(book.id);
+  if (book) {
+    document.getElementById("edit-book-id").value = book.id;
+    document.getElementById("edit-title").value = book.title;
+    document.getElementById("edit-genre").value = book.genre;
+    document.getElementById("edit-image").value = "";
+    document.getElementById("edit-modal").style.display = "block";
   }
 }
 
-document.getElementById("edit-book-form").addEventListener("submit", function (event) {
-  // event.preventDefault();
+function saveEdit() {
   const bookId = document.getElementById("edit-book-id").value;
   const title = document.getElementById("edit-title").value;
   const genre = document.getElementById("edit-genre").value;
-  
-  const imageInput = document.getElementById("image-input");
+
+  const imageInput = document.getElementById("edit-image");
   const imageFile = imageInput.files[0];
   let image = "";
+
   if (imageFile) {
     const reader = new FileReader();
     reader.onload = function (event) {
       image = event.target.result;
       updateBook(bookId, title, genre, image);
     };
-    reader.readAsDataURL(imageFile); 
+    reader.readAsDataURL(imageFile);
   } else {
-    const currentBook = books.find((book) => book.id === bookId);
-    image = currentBook.image; 
+    const booklist = JSON.parse(localStorage.getItem("books"));
+    const currentBook = booklist.find((book) => book.id === bookId);
+    image = currentBook.image; // Use existing image
     updateBook(bookId, title, genre, image);
   }
-});
-
-  const booklist = JSON.parse(localStorage.getItem("books"));
-  const bookIndex = booklist.findIndex(book => book.id === bookId);
-  if (bookIndex !== -1) {
-    booklist[bookIndex] = {
-      id: bookId,
-      title: title,
-      genre: genre,
-      image: image
-    };
-    localStorage.setItem("books", JSON.stringify(booklist));
-    document.getElementById("books").innerHTML = "";
-    bookcard();
-    closeEditForm();
-  }
-});
+}
 
 function closeEditForm() {
-  document.getElementById("edit-form").style.display = "none";
+  document.getElementById("edit-modal").style.display = "none";
 }
+
+function updateBook(bookId, title, genre, image) {
+  const booklist = JSON.parse(localStorage.getItem("books"));
+  const bookIndex = booklist.findIndex((book) => book.id === bookId);
+
+  if (bookIndex !== -1) {
+    const currentBook = booklist[bookIndex];
+    booklist[bookIndex] = {
+      id: bookId,
+      title: title || currentBook.title,
+      genre: genre || currentBook.genre,
+      image: image || currentBook.image,
+    };
+
+    localStorage.setItem("books", JSON.stringify(booklist));
+    displayTable();
+    closeEditForm();
+  }
+}
+
+document
+  .getElementById("edit-book-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+    const bookId = document.getElementById("edit-book-id").value;
+    const title = document.getElementById("edit-title").value;
+    const genre = document.getElementById("edit-genre").value;
+    const imageInput = document.getElementById("edit-image-input");
+    const imageFile = imageInput.files[0];
+    let image = "";
+    if (imageFile) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        image = event.target.result;
+        updateBook(bookId, title, genre, image);
+      };
+      reader.readAsDataURL(imageFile);
+    } else {
+      const currentBook = books.find((book) => book.id === bookId);
+      image = currentBook.image;
+      updateBook(bookId, title, genre, image);
+    }
+  });
