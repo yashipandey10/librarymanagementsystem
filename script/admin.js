@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   displayTable();
 });
 
-let books = [];
+let books = JSON.parse(localStorage.getItem("books")) || [];
 let a = 0;
 
 function generateId(obj) {
@@ -14,16 +14,16 @@ function generateId(obj) {
 function displayTable() {
   let arr = JSON.parse(localStorage.getItem("books"));
   let tbl = document.getElementById("tbl-shw");
-  tbl.innerHTML = `<div class="tablepu"><tr>
+  tbl.innerHTML = `<tr border="1">
             <th>Title</th>
             <th>Image</th>
             <th>Genre</th>
             <th>Action</th>
-        </tr></div>`;
+        </tr>`;
   arr.forEach((row) => {
     let tr = document.createElement("tr");
     const { title, image, genre, id } = row;
-    tr.innerHTML = `<td>${title}</td><td><img style="height:5rem" src ='${image}'></img></td><td>${genre}</td><td><button onclick="editBook('${id}')">edit</button> <button onclick="deletebook('${id}')">delete</button></td>`;
+    tr.innerHTML = `<td>${title}</td><td><img style="height:5rem" src ='${image}'></img></td><td>${genre}</td><td><button style="border-radius:15px ;border: 1px solid black; background-color: #A8D8B9;color: #2f4858;" onclick="editBook('${id}')">edit</button> <button style="border-radius:15px;border: 1px solid black; background-color: red ;color: white;" onclick="deletebook('${id}')">delete</button></td>`;
     tbl.appendChild(tr);
   });
 }
@@ -95,7 +95,7 @@ function saveEdit() {
   } else {
     const booklist = JSON.parse(localStorage.getItem("books"));
     const currentBook = booklist.find((book) => book.id === bookId);
-    image = currentBook.image; // Use existing image
+    image = currentBook.image; 
     updateBook(bookId, title, genre, image);
   }
 }

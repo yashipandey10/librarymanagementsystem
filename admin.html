@@ -6,16 +6,25 @@
     <link rel="stylesheet" href="./style/style.css" />
     <link rel="stylesheet" href="./style/admin.css" />
     <link rel="stylesheet" href="./style/loginstyle.css" ">
+
     <title>Document</title>
   </head>
   <body>
+    <nav class="navigation">
+        <a href="" class="navbar"><img src="./logo/logo.jpeg" alt="" width="40" height=40" class="logo"> </a>
+        <ul class="list">
+          <li class="list-elements"><a href="http://127.0.0.1:5500/index.html" class="nav-links">Home</a></li>
+          <li class="list-elements"><a href="http://127.0.0.1:5500/contact.html" class="nav-links">Contact</a></li>
+        </ul>
+    </nav>
     <div class="add-book">
+        <h3>ADD NEW BOOK</h3>
       <label>Books title</label>
       <input type="text" id="title-input" /><br />
       <label>Cover page</label>
       <input type="file" accept="image/*" id="image-input" /><br />
       <label for="">Genre</label>
-      <!-- <input type="text" id="genre-input" ><br> -->
+      
       <select name="select" id="genre-input">
         <option value="" selected disabled>select the genre</option>
         <option>Action & Adventure</option>
@@ -31,7 +40,8 @@
         <option>True crime</option>
         <option>Religious & Spirituality</option>
       </select>
-      <button type="submit" onclick="add()">Add book</button>
+      <br><br>
+      <button type="submit" onclick="add()"style="border-radius:15px;">Add book</button>
     </div>
 
     <div id="edit-modal" class="modal">

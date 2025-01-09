@@ -35,3 +35,31 @@
   #edit-modal{
     flex-direction: column;
   }
+  button{
+    cursor: pointer;
+  }
+
+  #tbl-shw{
+    margin: 50px 15vw;
+    width:75vw;
+    border-collapse: collapse;
+  }
+  #tbl-shw th{
+    padding: 10px;
+    align-items: center;
+    padding: 10px;
+    width: 10vw;
+    background-color: #f2f2f2;
+    border: 1px solid #000000;
+  }
+
+  #tbl-shw td{
+    padding:10px;
+  }
+  #edit-book-form{
+    display: flex;
+    gap: 15px;
+    margin: 16px;
+    justify-content: center;
+    flex-direction: column;
+  }
