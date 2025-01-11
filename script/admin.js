@@ -23,7 +23,7 @@ function displayTable() {
   arr.forEach((row) => {
     let tr = document.createElement("tr");
     const { title, image, genre, id } = row;
-    tr.innerHTML = `<td>${title}</td><td><img style="height:5rem" src ='${image}'></img></td><td>${genre}</td><td><button style="border-radius:15px ;border: 1px solid black; background-color: #A8D8B9;color: #2f4858;" onclick="editBook('${id}')">edit</button> <button style="border-radius:15px;border: 1px solid black; background-color: red ;color: white;" onclick="deletebook('${id}')">delete</button></td>`;
+    tr.innerHTML = `<td>${title}</td><td><img style="height:5rem" src ='${image}'></img></td><td>${genre}</td><td><button style="border-radius:15px ;border: 1px solid black; background-color: #A8D8B9;color: #2f4858; padding:0.7rem ; width:40%; margin-left:2.2rem;" onclick="editBook('${id}')">Edit</button> <button style="border-radius:15px;border: 1px solid black; background-color: red ;color: white;padding:0.7rem ; margin-left:.5rem; width:40%;" onclick="deletebook('${id}')">Delete</button></td>`;
     tbl.appendChild(tr);
   });
 }

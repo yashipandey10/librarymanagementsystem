@@ -126,6 +126,6 @@ function dis(g) {
   });
    if(count === 0)
    {
-    bookContainer.innerHTML=`<h2 style="color:#659e9a; margin-top:25rem;" >Currently we do not have books from ${g} genre  Sorry for the inconvenience </h2> `
+    bookContainer.innerHTML=`<h style="color:#659e9a; margin-top:25rem;" >Currently we do not have books from ${g} genre  Sorry for the inconvenience </h> `
    }
 }
