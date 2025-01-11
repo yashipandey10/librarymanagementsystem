@@ -66,7 +66,7 @@ const booksloaded = [
     title: "Catch and Killed",
   },
   {
-    genre: "Religious & Spirituality",
+    genre: "Religion & Spirituality",
     id: "atse11",
     image: "book images/shunya.jpg",
     title: "Shunya",
@@ -101,7 +101,6 @@ function borrow(id) {
   let idelement = id.innerHTML;
   localStorage.setItem("CurrborrowedId", idelement);
 }
-
 function sidebar(n) {
   let p = "btn" + `${n}`;
   let genre = document.getElementById(`${p}`).value;
@@ -110,6 +109,7 @@ function sidebar(n) {
 }
 
 function dis(g) {
+  let count=0;
   let bookContainer = document.getElementById("books");
   const booklist = JSON.parse(localStorage.getItem("books")) || [];
   console.log(booklist);
@@ -119,8 +119,13 @@ function dis(g) {
       let bookcard = document.createElement("div");
       bookcard.className = "bookcard";
       bookcard.id = book.id;
-      bookcard.innerHTML = `<img class="book-img" src="${book.image}"><h4>${book.title}</h4><h3>${book.genre}</h3><button class="btn-brw" onclick="borrow(${book.id})">borrow</button>`;
+      bookcard.innerHTML = `<img class="book-img" src="${book.image}"><h4>${book.title}</h4><h3>Gener-${book.genre}</h3><button class="btn-brw" onclick="borrow(${book.id})">borrow</button>`;
       bookContainer.appendChild(bookcard);
+      count++; 
     }
   });
+   if(count === 0)
+   {
+    bookContainer.innerHTML=`<h2 style="color:#659e9a; margin-top:25rem;" >Currently we do not have books from ${g} genre  Sorry for the inconvenience </h2> `
+   }
 }
