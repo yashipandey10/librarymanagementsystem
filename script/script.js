@@ -44,7 +44,7 @@ const booksloaded = [
   {
     genre: "self-help",
     id: "atse7",
-    image: "book images/youcanwin.jpg",
+    image: "book images/youcanwinnew.jpg",
     title: "You can win",
   },
   {

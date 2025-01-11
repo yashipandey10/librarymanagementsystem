@@ -15,9 +15,9 @@ body {
     justify-content: space-between;
     background-color: #2f4858;
     padding: 0 2rem;
-    height: 4rem;
+    height: 3rem; 
     color: #d2fae0;
-    
+    padding: 1.5rem;
 }
 
 .navbar {
@@ -56,7 +56,7 @@ body {
     height: calc(100vh - 4rem);
 }
 .sidebar {
-    width: 15%;
+    width: 13%;
     background-color: #a8d8b9;
     color: black;
     border-right: 1px solid #659e9a;
@@ -104,13 +104,13 @@ body {
     justify-content: space-evenly;
     align-items: start;
     padding: 1rem;
-    background-color: #f4f4f9;
+    background-color: #e9f1de;
     overflow-y: auto;
 }
 
 .bookcard {
     padding: 7px;
-    background-color: #fff;
+    background-color: #d9eddf;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -118,6 +118,7 @@ body {
     text-align: center;
     margin: 1rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+
 }
 
 .bookcard:hover {
@@ -170,6 +171,26 @@ a:link{
     text-decoration: none;
 }
 .foot{
+    border-top: 2rem,solid,#2f4858;
+    background-color: #2f4858;
+    color: #659e9a;
+    text-align: center;
+    padding: 0.8rem;
+    height: 2rem;
+}
+
+
+.foot1{
+    margin-top: 39.2rem;
+    border-top: 2rem,solid,#2f4858;
+    background-color: #2f4858;
+    color: #659e9a;
+    text-align: center;
+    padding: 0.8rem;
+    height: 2rem;
+}
+.foot2{
+    margin-top: none;
     border-top: 2rem,solid,#2f4858;
     background-color: #2f4858;
     color: #659e9a;
