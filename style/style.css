@@ -76,7 +76,8 @@ body {
 .btn {
     background-color: transparent;
     border: none;
-    padding: 0.8rem;
+
+    padding: 1rem;
     font-size: 1rem;
     font-weight: 500;
     border-radius: 5px;
@@ -84,6 +85,8 @@ body {
     margin: 0 1rem;
     text-align: center;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    color:#446862;
+    font-size: large;
 }
 
 .btn:hover {
