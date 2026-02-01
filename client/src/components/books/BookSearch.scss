@@ -1,0 +1,58 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.book-search {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+
+  @include max-width($breakpoint-sm) {
+    flex-direction: column;
+  }
+
+  &__wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    position: absolute;
+    left: $spacing-md;
+    color: $color-gray-500;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__input {
+    @include input-base;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  &__clear {
+    position: absolute;
+    right: $spacing-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    color: $color-gray-500;
+
+    &:hover {
+      background-color: $color-gray-200;
+      color: $color-gray-700;
+    }
+  }
+
+  &__btn {
+    @include button-primary;
+    white-space: nowrap;
+  }
+}

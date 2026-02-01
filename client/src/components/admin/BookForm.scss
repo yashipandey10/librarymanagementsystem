@@ -1,0 +1,70 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.book-form {
+  &__error {
+    background-color: lighten($color-error, 40%);
+    color: darken($color-error, 10%);
+    padding: $spacing-md;
+    border-radius: $border-radius;
+    margin-bottom: $spacing-md;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+
+    @include max-width($breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    margin-bottom: $spacing-md;
+
+    label {
+      display: block;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      color: $color-gray-700;
+      margin-bottom: $spacing-xs;
+    }
+
+    select,
+    textarea {
+      @include input-base;
+    }
+
+    select.error,
+    textarea.error {
+      border-color: $color-error;
+    }
+
+    .error-text {
+      color: $color-error;
+      font-size: $font-size-sm;
+      margin-top: $spacing-xs;
+    }
+
+    input[type="file"] {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__preview {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: $border-radius;
+    margin-top: $spacing-sm;
+    border: 1px solid $color-gray-300;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-md;
+    margin-top: $spacing-lg;
+  }
+}

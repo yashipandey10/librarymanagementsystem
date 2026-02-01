@@ -1,0 +1,102 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color-primary;
+  padding: 0 $spacing-xl;
+  height: $navbar-height;
+  color: $color-text-light;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    text-decoration: none;
+    color: $color-text-light;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-xl;
+  }
+
+  &__logo {
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius-full;
+    object-fit: cover;
+  }
+
+  &__title {
+    @include max-width($breakpoint-sm) {
+      display: none;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: $spacing-sm;
+
+    @include max-width($breakpoint-md) {
+      gap: $spacing-xs;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    color: $color-text-light;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+    border-radius: $border-radius;
+    transition: all $transition-base;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: $font-size-base;
+
+    @include max-width($breakpoint-md) {
+      padding: $spacing-sm;
+      font-size: $font-size-sm;
+    }
+
+    &:hover {
+      color: $color-secondary;
+      background-color: rgba($color-white, 0.1);
+    }
+
+    &--button {
+      font-family: inherit;
+    }
+
+    &--register {
+      background-color: $color-secondary;
+      color: $color-primary;
+
+      &:hover {
+        background-color: $color-accent;
+        color: $color-white;
+      }
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__user {
+    @include max-width($breakpoint-sm) {
+      display: none;
+    }
+  }
+}

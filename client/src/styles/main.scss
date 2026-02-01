@@ -1,0 +1,222 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Reset & Base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: $color-gray-800;
+  background-color: $color-background;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-sm;
+}
+
+h1 { font-size: $font-size-3xl; }
+h2 { font-size: $font-size-2xl; }
+h3 { font-size: $font-size-xl; }
+h4 { font-size: $font-size-lg; }
+h5 { font-size: $font-size-base; }
+h6 { font-size: $font-size-sm; }
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+a {
+  @include link;
+}
+
+// Lists
+ul, ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-lg;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Form elements
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+// Utility classes
+.container {
+  @include container;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: $color-primary; }
+.text-secondary { color: $color-secondary; }
+.text-accent { color: $color-accent; }
+.text-error { color: $color-error; }
+.text-success { color: $color-success; }
+
+.bg-primary { background-color: $color-primary; }
+.bg-secondary { background-color: $color-secondary; }
+.bg-accent { background-color: $color-accent; }
+
+.mt-1 { margin-top: $spacing-sm; }
+.mt-2 { margin-top: $spacing-md; }
+.mt-3 { margin-top: $spacing-lg; }
+.mt-4 { margin-top: $spacing-xl; }
+
+.mb-1 { margin-bottom: $spacing-sm; }
+.mb-2 { margin-bottom: $spacing-md; }
+.mb-3 { margin-bottom: $spacing-lg; }
+.mb-4 { margin-bottom: $spacing-xl; }
+
+.p-1 { padding: $spacing-sm; }
+.p-2 { padding: $spacing-md; }
+.p-3 { padding: $spacing-lg; }
+.p-4 { padding: $spacing-xl; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-1 { gap: $spacing-sm; }
+.gap-2 { gap: $spacing-md; }
+.gap-3 { gap: $spacing-lg; }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+
+.hidden { display: none; }
+
+// Responsive utilities
+@include mobile {
+  .hide-mobile { display: none !important; }
+}
+
+@include tablet {
+  .hide-tablet { display: none !important; }
+}
+
+@include desktop {
+  .hide-desktop { display: none !important; }
+}
+
+// Loading spinner
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid $color-gray-300;
+  border-top-color: $color-accent;
+  border-radius: $border-radius-full;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Alert/Message styles
+.alert {
+  padding: $spacing-md;
+  border-radius: $border-radius;
+  margin-bottom: $spacing-md;
+
+  &--success {
+    background-color: lighten($color-success, 45%);
+    color: darken($color-success, 10%);
+    border: 1px solid $color-success;
+  }
+
+  &--error {
+    background-color: lighten($color-error, 40%);
+    color: darken($color-error, 10%);
+    border: 1px solid $color-error;
+  }
+
+  &--warning {
+    background-color: lighten($color-warning, 35%);
+    color: darken($color-warning, 30%);
+    border: 1px solid $color-warning;
+  }
+
+  &--info {
+    background-color: lighten($color-info, 45%);
+    color: darken($color-info, 10%);
+    border: 1px solid $color-info;
+  }
+}
+
+// Page layout
+.page {
+  flex: 1;
+  padding: $spacing-lg;
+
+  @include min-width($breakpoint-md) {
+    padding: $spacing-xl;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+// Main layout with sidebar
+.main-layout {
+  display: flex;
+  min-height: calc(100vh - #{$navbar-height});
+}
+
+.main-content {
+  flex: 1;
+  padding: $spacing-lg;
+  overflow-y: auto;
+  @include custom-scrollbar;
+
+  @include min-width($breakpoint-md) {
+    padding: $spacing-xl;
+  }
+}
+
+// Custom scrollbar for body
+body {
+  @include custom-scrollbar;
+}

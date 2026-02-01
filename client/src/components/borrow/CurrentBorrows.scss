@@ -1,0 +1,76 @@
+@use '../../styles/variables' as *;
+
+.current-borrows {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  &--empty {
+    text-align: center;
+    color: $color-gray-600;
+    padding: $spacing-md;
+  }
+
+  &--compact {
+    .current-borrow {
+      padding: $spacing-sm;
+    }
+
+    .current-borrow__image {
+      width: 40px;
+      height: 60px;
+    }
+  }
+}
+
+.current-borrow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  &__image {
+    width: 50px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: $border-radius-sm;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__due {
+    font-size: $font-size-sm;
+    color: $color-gray-600;
+    margin: $spacing-xs 0 0;
+  }
+
+  &__remaining {
+    font-size: $font-size-sm;
+    color: $color-accent;
+    margin: 0;
+
+    &--overdue {
+      color: $color-error;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  &__fine {
+    font-size: $font-size-sm;
+    color: $color-error;
+    font-weight: $font-weight-medium;
+    margin: 0;
+  }
+}

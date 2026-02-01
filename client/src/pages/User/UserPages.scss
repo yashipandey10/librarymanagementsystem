@@ -1,0 +1,100 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.user-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+
+  @include min-width($breakpoint-md) {
+    padding: $spacing-xl;
+  }
+
+  &__title {
+    color: $color-primary;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-2xl;
+    color: $color-gray-600;
+
+    p {
+      margin-bottom: $spacing-lg;
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+}
+
+.wishlist-card {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+
+  &__link {
+    display: flex;
+    gap: $spacing-md;
+    text-decoration: none;
+    color: inherit;
+    padding: $spacing-sm;
+  }
+
+  &__image {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: $border-radius-sm;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+
+    h3 {
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
+      color: $color-primary;
+      margin: 0 0 $spacing-xs;
+      @include truncate;
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: $color-gray-600;
+      margin: 0 0 $spacing-xs;
+    }
+  }
+
+  &__genre {
+    @include badge;
+    font-size: 0.75rem;
+  }
+
+  &__availability {
+    margin-top: $spacing-sm;
+    font-weight: $font-weight-medium;
+    color: $color-success;
+
+    &--unavailable {
+      color: $color-error;
+    }
+  }
+
+  &__remove {
+    margin-top: auto;
+    align-self: flex-start;
+    color: $color-gray-500;
+
+    &:hover {
+      color: $color-error;
+    }
+  }
+}

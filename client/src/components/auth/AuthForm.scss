@@ -1,0 +1,56 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: $spacing-xl;
+  background-color: $color-white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+
+  &__title {
+    text-align: center;
+    color: $color-primary;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-2xl;
+  }
+
+  &__error {
+    background-color: lighten($color-error, 40%);
+    color: darken($color-error, 10%);
+    border: 1px solid $color-error;
+    padding: $spacing-md;
+    border-radius: $border-radius;
+    margin-bottom: $spacing-md;
+    font-size: $font-size-sm;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+
+    @include max-width($breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__link {
+    text-align: center;
+    margin-top: $spacing-md;
+    margin-bottom: 0;
+    color: $color-gray-600;
+    font-size: $font-size-sm;
+
+    a {
+      color: $color-accent;
+      font-weight: $font-weight-medium;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

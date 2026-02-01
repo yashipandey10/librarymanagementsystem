@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+
+.card {
+  background-color: $color-card;
+  border: 1px solid $color-gray-300;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &--hover:hover {
+    transform: scale(1.02);
+    box-shadow: $shadow-lg;
+  }
+
+  &--padding-none {
+    padding: 0;
+  }
+
+  &--padding-small {
+    padding: $spacing-sm;
+  }
+
+  &--padding-medium {
+    padding: $spacing-md;
+  }
+
+  &--padding-large {
+    padding: $spacing-lg;
+  }
+}

@@ -1,0 +1,88 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-card;
+  border: 1px solid $color-gray-300;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: $shadow-lg;
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 140%;
+    overflow: hidden;
+    background-color: $color-gray-200;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__badge {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    border-radius: $border-radius-sm;
+
+    &--unavailable {
+      background-color: $color-error;
+      color: $color-white;
+    }
+  }
+
+  &__content {
+    padding: $spacing-md;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-primary;
+    margin: 0;
+    @include truncate(2);
+  }
+
+  &__author {
+    font-size: $font-size-sm;
+    color: $color-gray-600;
+    margin: 0;
+    @include truncate;
+  }
+
+  &__genre {
+    @include badge;
+    align-self: flex-start;
+    font-size: 0.75rem;
+  }
+
+  &__availability {
+    font-size: $font-size-sm;
+    color: $color-accent;
+    margin: 0;
+    margin-top: auto;
+  }
+}

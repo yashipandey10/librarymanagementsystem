@@ -1,0 +1,72 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  background-color: $color-white;
+
+  &--primary .stat-card__icon {
+    background-color: rgba($color-primary, 0.1);
+    color: $color-primary;
+  }
+
+  &--secondary .stat-card__icon {
+    background-color: rgba($color-accent, 0.1);
+    color: $color-accent;
+  }
+
+  &--info .stat-card__icon {
+    background-color: rgba($color-info, 0.1);
+    color: $color-info;
+  }
+
+  &--warning .stat-card__icon {
+    background-color: rgba($color-warning, 0.1);
+    color: darken($color-warning, 20%);
+  }
+
+  &--danger .stat-card__icon {
+    background-color: rgba($color-error, 0.1);
+    color: $color-error;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: $border-radius;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__value {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-gray-800;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    color: $color-gray-600;
+  }
+}

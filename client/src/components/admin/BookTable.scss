@@ -1,0 +1,64 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.book-table-wrapper {
+  overflow-x: auto;
+}
+
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $color-white;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $shadow;
+
+  th,
+  td {
+    padding: $spacing-md;
+    text-align: left;
+    border-bottom: 1px solid $color-gray-200;
+  }
+
+  th {
+    background-color: $color-primary;
+    color: $color-white;
+    font-weight: $font-weight-semibold;
+    white-space: nowrap;
+  }
+
+  tr:hover {
+    background-color: $color-gray-100;
+  }
+
+  &__cover {
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: $border-radius-sm;
+  }
+
+  &__title {
+    font-weight: $font-weight-medium;
+    max-width: 200px;
+    @include truncate;
+  }
+
+  &__genre {
+    @include badge;
+    font-size: 0.75rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-xs;
+
+    button {
+      color: $color-gray-600;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}

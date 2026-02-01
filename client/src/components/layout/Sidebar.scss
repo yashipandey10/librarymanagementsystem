@@ -1,0 +1,56 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.sidebar {
+  width: $sidebar-width;
+  min-width: $sidebar-width;
+  background-color: $color-secondary;
+  border-right: 1px solid $color-accent;
+  padding: $spacing-md 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  overflow-y: auto;
+  @include custom-scrollbar;
+
+  @include max-width($breakpoint-md) {
+    display: none;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    text-align: center;
+    margin-bottom: $spacing-md;
+    color: $color-primary;
+  }
+
+  &__btn {
+    background-color: transparent;
+    border: none;
+    padding: $spacing-md;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    border-radius: $border-radius;
+    cursor: pointer;
+    margin: 0 $spacing-md;
+    text-align: center;
+    transition: background-color $transition-base, transform 0.2s ease;
+    color: $color-text-dark;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-hover;
+      transform: scale(1.03);
+    }
+
+    &--active {
+      color: $color-white;
+      background-color: $color-accent;
+
+      &:hover {
+        background-color: darken($color-accent, 10%);
+      }
+    }
+  }
+}

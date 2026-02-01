@@ -1,0 +1,143 @@
+.pending-requests {
+  margin-bottom: 2rem;
+}
+
+.pending-requests__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary, #2f4858);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pending-requests__empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-gray-600, #6c757d);
+}
+
+.pending-requests__empty svg {
+  margin-bottom: 1rem;
+  color: var(--color-gray-400, #ced4da);
+}
+
+.pending-requests__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pending-request {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-gray-100, #f8f9fa);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-warning, #ffc107);
+  transition: all 0.3s ease;
+}
+
+.pending-request:hover {
+  background-color: var(--color-gray-200, #e9ecef);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pending-request__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pending-request__user,
+.pending-request__book {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pending-request__user strong,
+.pending-request__book strong {
+  color: var(--color-primary, #2f4858);
+  font-size: 1rem;
+}
+
+.pending-request__email {
+  font-size: 0.875rem;
+  color: var(--color-gray-600, #6c757d);
+}
+
+.pending-request__book span {
+  font-size: 0.875rem;
+  color: var(--color-gray-600, #6c757d);
+}
+
+.pending-request__meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-gray-600, #6c757d);
+}
+
+.pending-request__availability {
+  font-weight: 500;
+  color: var(--color-info, #17a2b8);
+}
+
+.pending-request__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.reject-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reject-modal label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.reject-modal textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-gray-300, #dee2e6);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  resize: vertical;
+}
+
+.reject-modal textarea:focus {
+  outline: none;
+  border-color: var(--color-primary, #2f4858);
+}
+
+.reject-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .pending-request {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pending-request__actions {
+    width: 100%;
+  }
+
+  .pending-request__actions button {
+    flex: 1;
+  }
+}

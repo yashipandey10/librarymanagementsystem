@@ -1,0 +1,140 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.book-details-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+
+  @include min-width($breakpoint-md) {
+    padding: $spacing-xl;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    background: none;
+    border: none;
+    color: $color-accent;
+    cursor: pointer;
+    font-size: $font-size-base;
+    margin-bottom: $spacing-lg;
+
+    &:hover {
+      color: darken($color-accent, 10%);
+    }
+  }
+}
+
+.book-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  background-color: $color-white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow;
+
+  @include min-width($breakpoint-md) {
+    grid-template-columns: 300px 1fr;
+    padding: $spacing-xl;
+  }
+
+  &__image {
+    img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: $border-radius;
+      box-shadow: $shadow;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    margin: 0;
+
+    @include min-width($breakpoint-md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__author {
+    font-size: $font-size-lg;
+    color: $color-gray-600;
+    margin: 0;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    align-items: center;
+  }
+
+  &__genre {
+    @include badge;
+  }
+
+  &__isbn {
+    font-size: $font-size-sm;
+    color: $color-gray-500;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    span {
+      font-size: $font-size-sm;
+      color: $color-gray-600;
+    }
+  }
+
+  &__availability {
+    font-size: $font-size-base;
+    color: $color-accent;
+  }
+
+  &__description {
+    h3 {
+      font-size: $font-size-lg;
+      color: $color-primary;
+      margin-bottom: $spacing-sm;
+    }
+
+    p {
+      color: $color-gray-700;
+      line-height: 1.7;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    margin-top: auto;
+    padding-top: $spacing-md;
+
+    button {
+      flex: 1;
+      min-width: 150px;
+    }
+  }
+
+  &__reviews {
+    margin-top: $spacing-xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+  }
+}

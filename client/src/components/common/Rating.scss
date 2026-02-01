@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &--small {
+    .rating__star svg {
+      width: 14px;
+      height: 14px;
+    }
+    .rating__value {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &--medium {
+    .rating__star svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &--large {
+    .rating__star svg {
+      width: 24px;
+      height: 24px;
+    }
+    .rating__value {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &--readonly {
+    .rating__star {
+      cursor: default;
+    }
+  }
+
+  &__star {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: $color-gray-400;
+    transition: all $transition-fast;
+
+    &:not(:disabled):hover {
+      transform: scale(1.1);
+    }
+
+    &--filled {
+      color: #ffc107;
+
+      svg {
+        fill: #ffc107;
+      }
+    }
+
+    &--half {
+      color: #ffc107;
+    }
+  }
+
+  &__value {
+    margin-left: $spacing-xs;
+    font-weight: $font-weight-medium;
+    color: $color-gray-700;
+  }
+}
