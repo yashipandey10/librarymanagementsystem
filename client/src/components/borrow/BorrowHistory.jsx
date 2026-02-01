@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { format } from 'date-fns';
 import { Card, Button, Loading, Pagination } from '../common';
 import { borrowsAPI } from '../../api';
@@ -11,7 +11,7 @@ const BorrowHistory = () => {
   const [pagination, setPagination] = useState({ page: 1, pages: 1 });
   const [filter, setFilter] = useState('all');
 
-  const fetchBorrows = async (page = 1) => {
+  const fetchBorrows = useCallback(async (page = 1) => {
     setLoading(true);
     try {
       const params = { page, limit: 10 };
@@ -28,11 +28,11 @@ const BorrowHistory = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter]);
 
   useEffect(() => {
     fetchBorrows();
-  }, [filter]);
+  }, [fetchBorrows]);
 
   const handleReturn = async (borrowId) => {
     try {

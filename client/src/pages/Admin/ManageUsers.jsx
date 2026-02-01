@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { adminAPI } from '../../api';
 import { Loading, Input } from '../../components/common';
 import { UserTable } from '../../components/admin';
@@ -10,7 +10,7 @@ const ManageUsers = () => {
   const [pagination, setPagination] = useState({ page: 1, pages: 1 });
   const [search, setSearch] = useState('');
 
-  const fetchUsers = async (page = 1) => {
+  const fetchUsers = useCallback(async (page = 1) => {
     setLoading(true);
     try {
       const params = { page, limit: 20 };
@@ -25,11 +25,11 @@ const ManageUsers = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [search]);
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
 
   const handleSearch = (e) => {
     e.preventDefault();

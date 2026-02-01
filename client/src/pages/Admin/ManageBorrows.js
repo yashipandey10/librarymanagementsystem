@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { format } from 'date-fns';
 import { FiCheck, FiX } from 'react-icons/fi';
 import { borrowsAPI } from '../../api';
-import { Loading, Pagination, Card, Button, Modal } from '../../components/common';
+import { Loading, Pagination, Button, Modal } from '../../components/common';
 import './AdminPages.css';
 
 const ManageBorrows = () => {
@@ -13,7 +13,7 @@ const ManageBorrows = () => {
   const [actionLoading, setActionLoading] = useState(null);
   const [rejectModal, setRejectModal] = useState({ open: false, requestId: null, reason: '' });
 
-  const fetchBorrows = async (page = 1) => {
+  const fetchBorrows = useCallback(async (page = 1) => {
     setLoading(true);
     try {
       let response;
@@ -43,11 +43,11 @@ const ManageBorrows = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter]);
 
   useEffect(() => {
     fetchBorrows();
-  }, [filter]);
+  }, [fetchBorrows]);
 
   const handleApprove = async (borrowId) => {
     setActionLoading(borrowId);

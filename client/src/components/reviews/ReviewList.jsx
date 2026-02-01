@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { format } from 'date-fns';
 import { Rating, Loading, Pagination, Button } from '../common';
 import { reviewsAPI } from '../../api';
@@ -11,7 +11,7 @@ const ReviewList = ({ bookId, onReviewsLoaded }) => {
   const [pagination, setPagination] = useState({ page: 1, pages: 1 });
   const { user } = useAuth();
 
-  const fetchReviews = async (page = 1) => {
+  const fetchReviews = useCallback(async (page = 1) => {
     setLoading(true);
     try {
       const response = await reviewsAPI.getBookReviews(bookId, { page, limit: 5 });
@@ -27,11 +27,11 @@ const ReviewList = ({ bookId, onReviewsLoaded }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [bookId, onReviewsLoaded]);
 
   useEffect(() => {
     fetchReviews();
-  }, [bookId]);
+  }, [fetchReviews]);
 
   const handleDelete = async (reviewId) => {
     if (!window.confirm('Are you sure you want to delete this review?')) return;
