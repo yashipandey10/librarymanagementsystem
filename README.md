@@ -45,14 +45,15 @@ Before you begin, ensure you have the following installed:
 
 3. **Configure Environment Variables**
    
-   Create a `.env` file in the `server` directory with the following:
+   Copy `server/.env.example` to `server/.env`, then set a private JWT secret. For a local MongoDB server, the example URI creates/uses the `library_management` database:
    ```env
-   MONGODB_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret_key
+   MONGODB_URI=mongodb://127.0.0.1:27017/library_management
+   JWT_SECRET=replace_with_a_long_random_secret
    PORT=5000
    CLIENT_URL=http://localhost:3000
    NODE_ENV=development
    ```
+   In MongoDB Compass, connect with the same MongoDB URI to view the data. Compass is a database client; a local MongoDB Server must also be running. For MongoDB Atlas, replace the URI with the connection string from your Atlas cluster.
 
 4. **Set up the Frontend**
    ```bash
@@ -85,6 +86,18 @@ For development with auto-reload, use:
 # In server directory
 npm run dev  # Uses nodemon for auto-restart
 ```
+
+### Deployment
+
+The client, API, database, and optional MCP server deploy separately:
+
+1. Create a MongoDB Atlas cluster and database user. Restrict network access to the hosting provider's outbound IPs where available; avoid leaving database access open to all IPs.
+2. Deploy the API from this Git repository using the Render Blueprint at `render.yaml`. In Render, set `MONGODB_URI` to the Atlas connection string and `CLIENT_URL` to the deployed frontend's HTTPS origin.
+3. Deploy the client from this repository on Vercel with the project root set to `client`. Set `REACT_APP_API_URL` to the API's full URL ending in `/api`, for example `https://your-api.onrender.com/api`.
+4. If you want hosted AI-tool access, deploy the separate `library-management-system-mcp-tool` repository on Render using its `render.yaml`. Set `LIBRARY_API_BASE_URL` to the deployed API URL ending in `/api` and set a private `MCP_API_KEYS` value.
+5. Test the API health endpoint at `/api/health`, load the frontend, then connect an MCP-compatible client to the deployed MCP endpoint at `/mcp`.
+
+The MCP server currently caches login tokens in one in-memory session slot. Until that is changed to isolate each client/user session, run it as a private, single-user service rather than sharing it with unrelated users. Never commit production credentials or paste them into chat.
 
 ## 🛠️ Tech Stack
 
